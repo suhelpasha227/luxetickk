@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover timeless style with LuxeTick luxury watches." />
+  <title>LuxeTick | Timeless Luxury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #090909;
+      --panel: #121212;
+      --cream: #f4efe5;
+      --muted: #aaa49a;
+      --gold: #c9a66b;
+      --gold-light: #e8d1a5;
+      --line: rgba(201, 166, 107, .24);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .topbar {
+      background: var(--gold);
+      color: #17120b;
+      text-align: center;
+      padding: 9px 12px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(9, 9, 9, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      min-height: 76px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+    }
+
+    .logo span {
+      color: var(--cream);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      color: #d4cec3;
+      font-size: 13px;
+    }
+
+    .navlinks a {
+      transition: color .25s;
+    }
+
+    .navlinks a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-cta,
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #17120b;
+      padding: 13px 21px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: .3s ease;
+      cursor: pointer;
+    }
+
+    .nav-cta:hover,
+    .btn:hover {
+      background: transparent;
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--line);
+      color: var(--cream);
+      background: transparent;
+      padding: 8px 11px;
+      font-size: 20px;
+    }
+
+    .hero {
+      min-height: 650px;
+      max-width: 1440px;
+      margin: auto;
+      padding: 85px max(7vw, 24px);
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: center;
+      gap: 45px;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: 1.04;
+      max-width: 650px;
+    }
+
+    h1 em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 470px;
+      margin: 25px 0 32px;
+      font-size: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .text-link {
+      color: var(--gold-light);
+      font-size: 12px;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 5px;
+    }
+
+    .hero-visual {
+      min-height: 470px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 166, 107, .22), transparent 68%);
+      filter: blur(8px);
+    }
+
+    .hero-frame {
+      position: relative;
+      width: min(100%, 440px);
+      height: 480px;
+      border: 1px solid var(--line);
+      padding: 14px;
+      transform: rotate(2deg);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(145deg, #28231d, #090909);
+    }
+
+    .image-note {
+      position: absolute;
+      bottom: 28px;
+      right: -12px;
+      background: var(--gold);
+      color: #17120b;
+      padding: 13px 18px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(2deg);
+      }
+
+      50% {
+        transform: translateY(-13px) rotate(1deg);
+      }
+    }
+
+    .section {
+      padding: 100px 24px;
+    }
+
+    .section-inner {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 42px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(36px, 4vw, 53px);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 380px;
+      line-height: 1.8;
+      font-size: 13px;
+    }
+
+    .collection {
+      background: #10100f;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      background: #171715;
+      border: 1px solid rgba(255, 255, 255, .07);
+      transition: transform .35s, border-color .35s;
+      overflow: hidden;
+    }
+
+    .product:hover {
+      transform: translateY(-8px);
+      border-color: var(--line);
+    }
+
+    .product-image {
+      height: 310px;
+      padding: 16px;
+      position: relative;
+      background: radial-gradient(circle at 50% 45%, #39342b, #171715 67%);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform .5s;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.06);
+    }
+
+    .tag {
+      position: absolute;
+      top: 17px;
+      left: 17px;
+      color: #17120b;
+      background: var(--gold-light);
+      padding: 7px 10px;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 20px 21px 22px;
+    }
+
+    .product-info h3 {
+      font-size: 23px;
+      margin-bottom: 7px;
+    }
+
+    .product-info p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 17px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .price {
+      color: var(--gold-light);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .order-btn {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      padding: 10px 13px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .order-btn:hover {
+      background: var(--gold);
+      color: #17120b;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 75px;
+    }
+
+    .story-art {
+      min-height: 420px;
+      border: 1px solid var(--line);
+      padding: 13px;
+      background: #151412;
+    }
+
+    .story-art img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #393126, #111);
+    }
+
+    .story-copy h2 {
+      font-size: clamp(38px, 4vw, 55px);
+      line-height: 1.12;
+      margin-bottom: 23px;
+    }
+
+    .story-copy p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+      margin-bottom: 25px;
+    }
+
+    .features {
+      background: #10100f;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature {
+      padding: 30px 25px;
+      border: 1px solid var(--line);
+    }
+
+    .feature .icon {
+      color: var(--gold);
+      font-size: 27px;
+      margin-bottom: 18px;
+    }
+
+    .feature h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .contact {
+      text-align: center;
+      padding: 100px 24px;
+      background: linear-gradient(rgba(9, 9, 9, .86), rgba(9, 9, 9, .94)), radial-gradient(circle at center, #4b3921, #090909 65%);
+    }
+
+    .contact h2 {
+      font-size: clamp(38px, 5vw, 60px);
+      margin-bottom: 17px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin: 0 auto 28px;
+      max-width: 520px;
+      line-height: 1.8;
+      font-size: 13px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      padding: 28px 24px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 800px) {
+      .navlinks {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: #10100f;
+        padding: 22px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .navlinks.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 65px;
+        gap: 25px;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+      }
+
+      .hero-frame {
+        height: 390px;
+        max-width: 360px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .story-art,
+      .story-art img {
+        min-height: 330px;
+        height: 330px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .topbar {
+        font-size: 9px;
+        letter-spacing: 1.2px;
+      }
+
+      .nav {
+        min-height: 68px;
+        padding: 0 18px;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .navlinks {
+        top: 68px;
+      }
+
+      .hero {
+        padding: 55px 20px 65px;
+      }
+
+      h1 {
+        font-size: 49px;
+      }
+
+      .hero-visual {
+        min-height: 350px;
+      }
+
+      .hero-frame {
+        height: 340px;
+        max-width: 300px;
+      }
+
+      .hero-glow {
+        width: 280px;
+        height: 280px;
+      }
+
+      .section {
+        padding: 72px 18px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 14px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .product-image {
+        height: 330px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        padding: 75px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">A timeless statement • Discover your next signature watch</div>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#home">LUXE<span>TICK</span></a>
+      <div class="navlinks" id="navlinks">
+        <a href="#home">Home</a>
+        <a href="#collection">Our Watches</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="#collection">Explore Collection</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content reveal">
+        <div class="eyebrow">The art of fine timekeeping</div>
+        <h1>Time is your<br><em>finest</em> accessory.</h1>
+        <p class="hero-copy">Make every second count with a timepiece that speaks of confidence, character and timeless
+          style. Find the watch that feels like you.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#collection">Shop the collection</a>
+          <a class="text-link" href="#story">Discover LuxeTick ↗</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-glow"></div>
+        <div class="hero-frame">
+          <!-- Replace images/hero-watch.jpg with your main watch photo -->
+          <img src="images/hero-watch.PNG" alt="Featured luxury wristwatch"
+            onerror="this.style.opacity='.0'; this.parentElement.style.background='linear-gradient(145deg,#373027,#111)'">
+        </div>
+        <div class="image-note">Elegance in every detail</div>
+      </div>
+    </section>
+
+    <section class="section collection" id="collection">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Curated for your style</div>
+            <h2>Our Watches</h2>
+          </div>
+          <p>Explore statement pieces made to complement every moment, from everyday elegance to special occasions.</p>
+        </div>
+        <div class="products">
+          <article class="product reveal">
+            <div class="product-image"><span class="tag">Bestseller</span><img src="images/watch-1.jpeg"
+                alt="Rolex silver gold luxury watch"></div>
+            <div class="product-info">
+              <h3>Rolex Silver Gold</h3>
+              <p>Classic finish • Statement style</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Rolex Silver Gold')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><span class="tag">New arrival</span><img src="images/watch-2.jpeg"
+                alt="Silver Classic luxury watch"></div>
+            <div class="product-info">
+              <h3>Silver Classic</h3>
+              <p>Minimal design • Everyday luxury</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Silver Classic')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><span class="tag">Signature</span><img src="images/watch-3.jpeg"
+                alt="Golden rolex"></div>
+            <div class="product-info">
+              <h3>Golden Rolex</h3>
+              <p>GOLDEN</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Golden Rolex')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-4.jpeg" alt="Golden Hour luxury watch"></div>
+            <div class="product-info">
+              <h3> ROLEX Couple Combo</h3>
+              <p>Rolex couple combo</p>
+              <div class="product-bottom"><span class="price">₹2199</span><button class="order-btn"
+                  onclick="orderWatch('Golden Hour')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-5.jpeg" alt="Emerald Edge luxury watch"></div>
+            <div class="product-info">
+              <h3>Seiko premium</h3>
+              <p>Seiko premium luxury watch</p>
+              <div class="product-bottom"><span class="price">₹1299</span><button class="order-btn"
+                  onclick="orderWatch('Seiko')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-6.jpeg" alt="Everyday Icon luxury watch"></div>
+            <div class="product-info">
+              <h3>Casio watch</h3>
+              <p>Casio watch premium</p>
+              <div class="product-bottom"><span class="price">₹899</span><button class="order-btn"
+                  onclick="orderWatch('Casio watch')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-7.jpeg" alt="Rose Elegance luxury watch"></div>
+            <div class="product-info">
+              <h3>silver white</h3>
+              <p>Warm metallic finish • Elegant look</p>
+              <div class="product-bottom"><span class="price">₹1299</span><button class="order-btn"
+                  onclick="orderWatch('silver white')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-8.jpeg" alt="Ocean Blue luxury watch"></div>
+            <div class="product-info">
+              <h3>Armani luxury watch</h3>
+              <p>Blue dial • Confident style</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Armani luxury watch')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-9.jpeg" alt="Black Prestige luxury watch"></div>
+            <div class="product-info">
+              <h3>hublot watch</h3>
+              <p>hublot watch• Modern design</p>
+              <div class="product-bottom"><span class="price">₹899</span><button class="order-btn"
+                  onclick="orderWatch('Black Prestige')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-10.jpeg" alt="Chrono Prime luxury watch"></div>
+            <div class="product-info">
+              <h3>Silver Luxury</h3>
+              <p>Silver luxury look • Bold details</p>
+              <div class="product-bottom"><span class="price">₹1299</span><button class="order-btn"
+                  onclick="orderWatch('Silver Luxury')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-11.jpeg" alt="Royal Silver luxury watch"></div>
+            <div class="product-info">
+              <h3>Royal Silver</h3>
+              <p>Polished bracelet • Classic appeal</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Royal Silver')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-12.jpeg" alt="Golden Classic luxury watch"></div>
+            <div class="product-info">
+              <h3>Green Silver  </h3>
+              <p>Green  silver • Timeless design</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Green Silver')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-13.jpeg" alt="Green Majesty luxury watch"></div>
+            <div class="product-info">
+              <h3>Black Casio</h3>
+              <p>Black dial • Distinctive style</p>
+              <div class="product-bottom"><span class="price">₹899</span><button class="order-btn"
+                  onclick="orderWatch('Black Casio')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-14.jpeg" alt="Urban Steel luxury watch"></div>
+            <div class="product-info">
+              <h3>Urban Steel</h3>
+              <p>Steel finish • Everyday statement</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Urban Steel')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-15.jpeg" alt="Pearl White luxury watch"></div>
+            <div class="product-info">
+              <h3>Mahrron Rolex</h3>
+              <p>Clean Premium • Refined style</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Mahrron Rolex')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-16.jpeg" alt="Carbon Black luxury watch"></div>
+            <div class="product-info">
+              <h3>Armani</h3>
+              <p>Dark dial • Minimal character</p>
+              <div class="product-bottom"><span class="price">₹1499</span><button class="order-btn"
+                  onclick="orderWatch('Armani')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-17.jpeg" alt="Rose Gold Luxe luxury watch"></div>
+            <div class="product-info">
+              <h3> Full kit 12 Watch Collection</h3>
+              <p>12 watch combo collection • Premium look</p>
+              <div class="product-bottom"><span class="price">₹9999</span><button class="order-btn"
+                  onclick="orderWatch('Full kit 12 Watch Collection')">Order Now ↗</button></div>
+            </div>
+          </article>
+          <article class="product reveal">
+            <div class="product-image"><img src="images/watch-18.jpeg" alt="Blue Horizon luxury watch"></div>
+            <div class="product-info">
+              <h3>Grey Gold</h3>
+              <p>grey gold dial • Smart everyday style</p>
+              <div class="product-bottom"><span class="price">₹999</span><button class="order-btn"
+                  onclick="orderWatch('Grey Gold')">Order Now ↗</button></div>
+            </div>
+          </article>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="section-inner story">
+        <div class="story-art reveal">
+          <!-- Optional: replace with a lifestyle or close-up watch photo -->
+          <img src="images/watch-detail.png" alt="Luxury watch detail"
+            onerror="this.style.opacity='.0'; this.parentElement.style.background='linear-gradient(145deg,#3b3022,#111)'">
+        </div>
+        <div class="story-copy reveal">
+          <div class="eyebrow">More than keeping time</div>
+          <h2>Made to be noticed.<br><em style="color:var(--gold-light)">Chosen to be remembered.</em></h2>
+          <p>At LuxeTick, we believe a watch is more than an accessory. It is a reflection of your taste, your ambition
+            and the moments that matter. Explore our collection and choose the piece that tells your story.</p>
+          <a class="text-link" href="#collection">Find your timepiece ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section features">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">The LuxeTick experience</div>
+            <h2>Why choose us?</h2>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature reveal">
+            <div class="icon">✧</div>
+            <h3>Curated Style</h3>
+            <p>Distinctive designs selected to bring a refined touch to your everyday look.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">◇</div>
+            <h3>Personal Assistance</h3>
+            <p>Have a question? Chat with us directly on WhatsApp before placing your order.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">⌚</div>
+            <h3>Your Signature Look</h3>
+            <p>Find a timepiece that suits your personality and makes every outfit feel complete.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="eyebrow">Your next favourite watch awaits</div>
+      <h2>Let's find your perfect timepiece.</h2>
+      <p>Message us on WhatsApp for product details, availability and ordering assistance.</p>
+      <a class="btn"
+        href="https://wa.me/919027448587?text=Hello%20LuxeTick%2C%20I%20want%20to%20know%20more%20about%20your%20watches."
+        target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner"><span class="logo">LUXE<span>TICK</span></span><span>© <span id="year"></span> Sam suhel LuxeTick.
+        All rights reserved.</span><span>Timeless style. Every second.</span></div>
+  </footer>
+
+  <script>
+    const whatsappNumber = "919027448587"; // India country code +91
+
+    function orderWatch(watchName) {
+      const message = `Hello LuxeTick! I am interested in the ${watchName}. Please share the price and availability.`;
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener");
+    }
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navlinks = document.getElementById("navlinks");
+    menuBtn.addEventListener("click", () => navlinks.classList.toggle("open"));
+    navlinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => navlinks.classList.remove("open"));
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
